@@ -16,12 +16,13 @@ RUN apt-get -y install links
 ENV APP_PASS=""
 ENV ROOT_PASS=""
 ENV APP_DB_PASS=""
+ENV DB_USER="root"
 
 RUN echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/app-password-confirm password $APP_PASS" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | debconf-set-selections
-RUN echo 'phpmyadmin/mysql/admin-user string root'| debconf-set-selections 
+RUN echo 'phpmyadmin/mysql/admin-user string $DB_USER'| debconf-set-selections 
 RUN echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
 
 #PHPMYADMIN
