@@ -13,6 +13,7 @@ RUN apt-get -y install mongodb-org mongodb-org-server -y
 RUN apt-get update -y
 RUN apt-get -y install links
 
+USER gitpod
 #PHPMYADMIN SETUP
 ENV APP_PASS=""
 ENV ROOT_PASS=""
@@ -40,7 +41,7 @@ RUN sudo apt-get update && \
 
 RUN sudo dpkg-reconfigure --frontend=noninteractive phpmyadmin
 
-USER gitpod
+
 # Local environment variables
 # C9USER is temporary to allow the MySQL Gist to run
 ENV C9_USER="gitpod"
