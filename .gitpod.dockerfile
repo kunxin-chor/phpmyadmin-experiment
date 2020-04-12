@@ -38,7 +38,7 @@ RUN echo "phpmyadmin phpmyadmin/db/app-user string $DB_USER" | debconf-set-selec
 
 
 #PHPMYADMIN
-apt-get install -y phpmyadmin
+RUN apt-get install -y phpmyadmin
 
 
 # Local environment variables
