@@ -16,7 +16,7 @@ RUN apt-get -y install links
 ENV APP_PASS=""
 ENV ROOT_PASS=""
 ENV APP_DB_PASS=""
-ENV DB_USER="root"
+ENV DB_USER="root@localhost"
 
 RUN echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/app-password-confirm password $APP_PASS" | debconf-set-selections
