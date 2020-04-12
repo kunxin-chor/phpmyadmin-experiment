@@ -25,6 +25,7 @@ RUN echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | debconf-
 RUN echo "phpmyadmin phpmyadmin/setup-password password $ROOT_PASS" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/mysql/admin-user string $DB_USER"| debconf-set-selections 
 RUN echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
+RUN echo "phpmyadmin phpmyadmin/remote/host select localhost" | debconf-set-selections
 
 
 #PHPMYADMIN
