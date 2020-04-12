@@ -13,6 +13,7 @@ RUN apt-get -y install mongodb-org mongodb-org-server -y
 RUN apt-get update -y
 RUN apt-get -y install links
 
+#PHPMYADMIN SETUP
 ENV APP_PASS=""
 ENV ROOT_PASS=""
 ENV APP_DB_PASS=""
