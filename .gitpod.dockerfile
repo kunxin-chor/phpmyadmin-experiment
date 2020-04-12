@@ -1,4 +1,6 @@
 FROM gitpod/workspace-mysql
+RUN mysql -u root -e "CREATE USER 'admin'@'%' IDENTIFIED BY '';"
+RUN mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
 
 USER root
 # Setup Heroku CLI
@@ -12,9 +14,6 @@ RUN touch /etc/init.d/mongod
 RUN apt-get -y install mongodb-org mongodb-org-server -y
 RUN apt-get update -y
 RUN apt-get -y install links
-
-RUN mysql -u root -e "CREATE USER 'admin'@'%' IDENTIFIED BY '';"
-RUN mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
 
 USER gitpod
 #PHPMYADMIN SETUP
