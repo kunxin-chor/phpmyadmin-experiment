@@ -38,11 +38,7 @@ RUN echo "phpmyadmin phpmyadmin/db/app-user string $DB_USER" | debconf-set-selec
 
 
 #PHPMYADMIN
-RUN sudo apt-get update && \
-    sudo env="DEBIAN_FRONTEND=noninteractive" apt-get install -y phpmyadmin && \
-    sudo rm -rf /var/lib/apt/lists/*
-
-RUN sudo dpkg-reconfigure --frontend=noninteractive phpmyadmin
+apt-get install -y phpmyadmin
 
 
 # Local environment variables
