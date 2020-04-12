@@ -25,11 +25,7 @@ RUN echo "phpmyadmin phpmyadmin/mysql/admin-user string root"| debconf-set-selec
 RUN echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
 
 #PHPMYADMIN
-RUN sudo apt-get update && \
-    sudo env="DEBIAN_FRONTEND=noninteractive" apt-get install -y phpmyadmin && \
-    sudo rm -rf /var/lib/apt/lists/*
-
-RUN sudo dpkg-reconfigure --frontend=noninteractive phpmyadmin
+RUN apt-get install -y phpmyadmin
 
 USER gitpod
 # Local environment variables
