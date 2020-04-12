@@ -20,8 +20,8 @@ ENV ROOT_PASS=""
 ENV APP_DB_PASS=""
 ENV DB_USER="admin"
 
-RUN mysql -e "CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '';"
-RUN mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_USER}'@'%' WITH GRANT OPTION;"
+RUN mysql -u root -e "CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '';"
+RUN mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_USER}'@'%' WITH GRANT OPTION;"
 
 RUN echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/app-password-confirm password $APP_PASS" | debconf-set-selections
