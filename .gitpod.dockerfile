@@ -1,6 +1,6 @@
 FROM gitpod/workspace-mysql
-RUN mysql -u root -e "CREATE USER 'admin'@'%' IDENTIFIED BY '';"
-RUN mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
+RUN mysql -u root -p "" -e "CREATE USER 'admin'@'%' IDENTIFIED BY '';"
+RUN mysql -u root -p "" -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
 
 USER root
 # Setup Heroku CLI
