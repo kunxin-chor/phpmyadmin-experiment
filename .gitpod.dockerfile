@@ -13,6 +13,18 @@ RUN apt-get -y install mongodb-org mongodb-org-server -y
 RUN apt-get update -y
 RUN apt-get -y install links
 
+# set file permissions so that user `gitpod` can work with MairaDB, Nginx, PHP and PHPMyAdmin
+RUN mkdir /run/mysqld && \
+    chown -R gitpod:gitpod \
+        /etc/supervisor* \
+        /etc/mysql \
+        /etc/phpmyadmin \
+        /usr/local/etc/ \
+        /var/log \
+        /run \
+        /sessions
+
+#PHPMYADMIN
 ENV APP_PASS=""
 ENV ROOT_PASS=""
 ENV APP_DB_PASS=""
@@ -23,8 +35,6 @@ RUN echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | debconf-
 RUN echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/mysql/admin-user string root"| debconf-set-selections 
 RUN echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
-
-#PHPMYADMIN
 RUN apt-get install -y phpmyadmin
 
 USER gitpod
