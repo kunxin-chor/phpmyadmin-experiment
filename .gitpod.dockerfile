@@ -18,7 +18,7 @@ RUN chown -R gitpod:gitpod \
         /etc/mysql \
         /usr/local/etc/ \
         /var/log \
-        /run \
+        /run
 
 #PHPMYADMIN
 ENV APP_PASS=""
