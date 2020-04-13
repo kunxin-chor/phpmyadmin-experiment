@@ -15,13 +15,10 @@ RUN apt-get -y install links
 
 # set file permissions so that user `gitpod` can work with MairaDB, Nginx, PHP and PHPMyAdmin
 RUN chown -R gitpod:gitpod \
-        /etc/supervisor* \
         /etc/mysql \
-        /etc/phpmyadmin \
         /usr/local/etc/ \
         /var/log \
         /run \
-        /sessions
 
 #PHPMYADMIN
 ENV APP_PASS=""
@@ -46,4 +43,6 @@ ENV C9_HOSTNAME="localhost"
 
 
 USER root
+RUN chown -R gitpod:gitpod   /etc/phpmyadmin
 # Switch back to root to allow IDE to load
+
