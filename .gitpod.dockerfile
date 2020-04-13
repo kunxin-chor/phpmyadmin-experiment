@@ -14,8 +14,7 @@ RUN apt-get update -y
 RUN apt-get -y install links
 
 # set file permissions so that user `gitpod` can work with MairaDB, Nginx, PHP and PHPMyAdmin
-RUN mkdir /run/mysqld && \
-    chown -R gitpod:gitpod \
+RUN chown -R gitpod:gitpod \
         /etc/supervisor* \
         /etc/mysql \
         /etc/phpmyadmin \
